@@ -46,5 +46,6 @@ export async function random() {
 }
 
 export default {
-	search
+	search,
+	random
 }
