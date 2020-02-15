@@ -1,5 +1,3 @@
-import { urlencoded } from "body-parser"
-
 const apiKey = `1HtuTdKSbKUcEyVW0UQxhntyEQoI56gy`
 
 /**
@@ -8,7 +6,20 @@ const apiKey = `1HtuTdKSbKUcEyVW0UQxhntyEQoI56gy`
  * @returns {String} A string representing the full endpoint URL
  */
 function endpointUrl(endpoint) {
-	return `api.giphy.com/v1/gifs/${endpoint}?api_key=${apiKey}`
+	return `https://api.giphy.com/v1/gifs/${endpoint}?api_key=${apiKey}`
+}
+
+
+async function fetchAsync(...args) {
+	const response = await fetch(...args)
+
+	if (!response.ok) throw Error(`Unable to fetch results from GIPHY.`)
+
+	const { data } = await response.json()
+
+	console.log(data)
+
+	return data
 }
 
 /**
@@ -17,21 +28,23 @@ function endpointUrl(endpoint) {
  * @returns {Array} An array of GIFs
  */
 export async function search(searchTerm = ``) {
-	if (!searchTerm) return []
+	if (!searchTerm || searchTerm.length < 3) return []
 
-	const response = await fetch(`${endpointUrl(`search`)}&q=${urlencoded(searchTerm)}`)
+	const results = await fetchAsync(`${endpointUrl(`search`)}&q=${(searchTerm).replace(/\s/g, `+`)}`)
 
-	return response
+	return results.map(({ images: { origin_mp4: { mp4: url } } }) => url)
+}
+
+/**
+ * A function to perform a GIPHY API random request
+ * @returns {GIF} An object representing a GIF
+ */
+export async function random() {
+	const results = await fetchAsync(`${endpointUrl(`random`)}`)
+
+	return results
 }
 
 export default {
 	search
-}
-
-export async function random() {
-	const response = await fetch(`${endpointUrl(`random`)}`)
-
-	if (!response.ok) throw Error(response.data)
-
-	return response.data
 }
