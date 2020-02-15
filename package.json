@@ -19,7 +19,9 @@
   "eslintConfig": {
 		"extends": "react-app",
 		"rules": {
-			"quotes": [2, "backtick"]
+			"key-spacing": "error",
+			"quotes": [2, "backtick"],
+			"semi": ["error", "never"]
 		}
   },
   "browserslist": {
