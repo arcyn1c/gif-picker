@@ -1,0 +1,26 @@
+.SearchInput {
+	position: relative;
+}
+
+.SearchInput > input {
+	background-color: rgba(255, 255, 255, 0.2);
+	font-size: 1.3em;
+	padding: 0.3em 0.75em 0.3em 2em;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 6px;
+	color: white;
+}
+.SearchInput > input::placeholder {
+	font-style: italic;
+}
+
+.SearchInput > img {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 50%;
+	margin-top: -20px;
+	margin-left: 5px;
+	color: white;
+	filter: invert();
+}
