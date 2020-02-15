@@ -30,7 +30,7 @@ export async function search(searchTerm = ``) {
 
 	const results = await fetchAsync(`${endpointUrl(`search`)}&q=${(searchTerm).replace(/\s/g, `+`)}`)
 
-	return results.map(({ url, images: { original_mp4: { mp4 } } }) => ({ url, mp4 }))
+	return results.map(({ title, url, images: { original_mp4: { mp4 } } }) => ({ title, url, mp4 }))
 }
 
 /**
@@ -38,9 +38,9 @@ export async function search(searchTerm = ``) {
  * @returns {GIF} An object representing a GIF
  */
 export async function random() {
-	const { url, images: { original_mp4: { mp4 } } } = await fetchAsync(`${endpointUrl(`random`)}`)
+	const { title, url, images: { original_mp4: { mp4 } } } = await fetchAsync(`${endpointUrl(`random`)}`)
 
-	return { url, mp4 }
+	return { title, url, mp4 }
 }
 
 export default {
