@@ -10,6 +10,6 @@ export default function SearchInput({ onChange = (_results) => { } }) {
 
 	return <div className="SearchInput">
 		<img src={require(`../assets/search-icon.png`)} alt="search-input-icon" />
-		<input type="text" placeholder="What ya looking for?" maxLength={50} autoFocus onChange={handleChange} />
+		<input type="text" placeholder="Whatcha lookin' for?" maxLength={50} autoFocus onChange={handleChange} />
 	</div>
 }
