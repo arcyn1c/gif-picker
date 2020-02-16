@@ -5,27 +5,24 @@ export default {
 
 	icon: {
 		position: `absolute`,
-		width: `30px`,
-		height: `30px`,
+		width: 30,
+		height: 30,
 		top: `50%`,
-		marginTop: `-15px`,
-		marginLeft: `5px`,
+		marginTop: -15,
+		marginLeft: 5,
 		color: `white`,
 		filter: `invert()`
 	},
 
-	input: {
-		backgroundColor: `rgba(255, 255, 255, 0.2)`,
-		fontSize: `1em`,
-		padding: `0.3em 0.75em 0.3em 2em`,
-		border: `1px solid rgba(255, 255, 255, 0.3)`,
-		borderRadius: 6,
-		color: `white`,
-		boxShadow: `0 3px 10px rgba(0, 0, 0, 0.2)`
-
-	},
-
 	loader: {
-
+		width: 15,
+		height: 15,
+		border: `2px dashed rgba(255, 255, 255, 0.6)`,
+		borderRadius: 100,
+		position: `absolute`,
+		right: 0,
+		top: `50%`,
+		marginTop: -7.5,
+		marginRight: 7.5
 	}
 }

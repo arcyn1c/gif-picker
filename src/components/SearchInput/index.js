@@ -3,11 +3,12 @@ import React from "react"
 import searchIcon from "../../assets/searchIcon.png"
 
 import styles from "./styles"
+import "./styles.css"
 
-export default function SearchInput({ onChange = (_results) => { } }) {
+export default function SearchInput({ isSearching = false, onChange = (_searchTerm) => { } }) {
 
-	function handleChange(event) {
-		onChange(event.target.value)
+	function handleChange(e) {
+		onChange(e.target.value)
 	}
 
 	return <div style={styles.container}>
@@ -15,6 +16,6 @@ export default function SearchInput({ onChange = (_results) => { } }) {
 
 		<input style={styles.input} type="text" placeholder="Whatcha lookin' for?" maxLength={50} autoFocus onChange={handleChange} />
 
-		<div style={styles.loader} />
+		{isSearching && <div style={styles.loader} className="loader" />}
 	</div>
 }
