@@ -1,20 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 
-import SearchInput from './components/SearchInput';
+import GIPHY from "./services/giphy"
 
-import './App.css';
+import SearchInput from './components/SearchInput'
+import GIF from "./components/GIF"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-				<h1>GIF Picker</h1>
-				<i>Search for a GIF or pick a random one from below</i>
+import './App.css'
+import GIFPage from './components/GIFPage'
 
-				<SearchInput/>
-      </header>
-    </div>
-  );
+async function getRandomGIFs() {
+	const gifs = await Promise.all([
+		GIPHY.random(),
+		GIPHY.random(),
+		GIPHY.random()
+	])
+
+	return gifs
 }
 
-export default App;
+function App() {
+	const [
+		[randomGifs, setRandomGIFs],
+		[searchResults, setSearchResults]
+	] = [useState([]), useState([])]
+
+	useEffect(() => {
+		async function fetchRandomGIFs() {
+			const results = await getRandomGIFs()
+			console.log(results)
+			setRandomGIFs(results)
+		}
+
+		fetchRandomGIFs()
+	}, [setRandomGIFs])
+
+	async function search(term = ``) {
+		const results = await GIPHY.search(term)
+		setSearchResults(results)
+	}
+
+	const hasSearchResults = searchResults.length > 0
+
+	return (
+		<div className="App">
+			<header className="App-header">
+				<h1>GIF Picker</h1>
+				<i>Search for GIFs or pick a random one from below</i>
+
+				<SearchInput onChange={search} />
+			</header>
+
+			<GIFPage header={hasSearchResults ? `Search Results` : `Random`} gifs={hasSearchResults ? searchResults : randomGifs} />
+		</div>
+	)
+}
+
+export default App
