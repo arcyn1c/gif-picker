@@ -1,12 +1,11 @@
 export default {
 	container: {
-		flex: 1,
-		height: `200px`,
-		minWidth: `200px`,
+		maxWidth: 300,
+		height: 200,
 		margin: `0.5em`,
 		backgroundColor: `rgba(0, 0, 0, 0.5)`,
-		paddingBottom: `50px`,
-		borderRadius: `8px`,
+		paddingBottom: 50,
+		borderRadius: 8,
 		boxShadow: `0 3px 10px rgba(0, 0, 0, 0.5)`,
 		border: `1px solid rgba(255, 255, 255, 0.1)`,
 		overflow: `hidden`
@@ -22,7 +21,7 @@ export default {
 		display: `flex`,
 		justifyContent: `spaceBetween`,
 		alignItems: `center`,
-		height: `50px`,
+		height: 50,
 		margin: `0 0.5em`
 	},
 
