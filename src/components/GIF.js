@@ -21,8 +21,9 @@ export default function GIF({ title, url, mp4 }) {
 			<source type="video/mp4" src={mp4}></source>
 		</video>
 		<div className="button-container">
-			<input type="text" ref={urlRef} value={url} readOnly />
+			<input type="text" ref={urlRef} value={url} title={url} readOnly />
 
+			{/* Check whether the copy command is supported before showing copy button */}
 			{document.queryCommandSupported(`copy`) && <button onClick={copyToClipboard}>{copied ? `Copied!` : `Copy`}</button>}
 		</div>
 	</div>
