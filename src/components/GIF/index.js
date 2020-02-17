@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 
 import styles from "./styles"
 
-export default function GIF({ title, url, mp4 }) {
+export default function GIF({ key, title, url, mp4 }) {
 	const urlRef = useRef(null)
 
 	const [copied, setCopied] = useState(false)
@@ -16,9 +16,10 @@ export default function GIF({ title, url, mp4 }) {
 		setTimeout(() => setCopied(false), 3000)
 	}
 
-	return <div style={styles.container}>
+	return <div key={key} style={styles.container}>
 		<video style={styles.video} autoPlay loop title={title}>
 			<source type="video/mp4" src={mp4}></source>
+			Your browser doesn't support the video tag.
 		</video>
 
 		<div style={styles.buttonContainer}>

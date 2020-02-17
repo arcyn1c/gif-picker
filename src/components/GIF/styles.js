@@ -26,8 +26,7 @@ export default {
 	},
 
 	copyButton: {
-		whiteSpace: `nowrap`,
-		cursor: `pointer`
+		whiteSpace: `nowrap`
 	},
 
 	urlInput: {
