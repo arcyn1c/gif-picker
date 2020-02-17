@@ -3,7 +3,7 @@ import LazyLoad from "react-lazyload"
 
 import styles from "./styles"
 
-export default function GIF({ key, title, url, mp4 }) {
+export default function GIF({ id, title, url, mp4 }) {
 	const urlRef = useRef(null)
 
 	const [copied, setCopied] = useState(false)
@@ -17,7 +17,7 @@ export default function GIF({ key, title, url, mp4 }) {
 		setTimeout(() => setCopied(false), 3000)
 	}
 
-	return <div key={key} style={styles.container}>
+	return <div key={id} style={styles.container}>
 		<LazyLoad>
 			<video style={styles.video} autoPlay loop title={title} playsInline muted>
 				<source type="video/mp4" src={mp4}></source>

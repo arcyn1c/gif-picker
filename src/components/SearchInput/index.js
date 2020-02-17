@@ -14,7 +14,7 @@ export default function SearchInput({ isSearching = false, onChange = (_searchTe
 	return <div style={styles.container}>
 		<img style={styles.icon} src={searchIcon} alt="search-input-icon" />
 
-		<input style={styles.input} type="text" placeholder="Whatcha lookin' for?" maxLength={50} autoFocus autoComplete="off" autoCorrect="off" spellCheck="false" onChange={handleChange} />
+		<input style={styles.input} type="text" placeholder="Whatcha lookin' for?" maxLength={50} autoFocus autoComplete="off" autoCorrect="off" spellCheck="false" autoCapitalize="false" onChange={handleChange} />
 
 		{isSearching && <div style={styles.loader} className="loader" />}
 	</div>
