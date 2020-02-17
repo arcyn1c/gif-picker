@@ -15,9 +15,9 @@ async function fetchAsync(...args) {
 
 	if (!response.ok) throw Error(`Unable to fetch results from GIPHY.`)
 
-	const { data } = await response.json()
+	const { data, pagination } = await response.json()
 
-	return data
+	return { data, pagination }
 }
 
 /**
@@ -25,12 +25,13 @@ async function fetchAsync(...args) {
  * @param {String} searchTerm The term to search the GIPHY API for
  * @returns {Array} An array of GIFs
  */
-export async function search(searchTerm = ``) {
-	if (!searchTerm || searchTerm.length < 3) return []
+export async function search(searchTerm = ``, limit = 6, offset = 0) {
+	const { data, pagination } = await fetchAsync(`${endpointUrl(`search`)}&q=${(searchTerm).replace(/\s/g, `+`)}&limit=${limit}&offset=${offset}`)
 
-	const results = await fetchAsync(`${endpointUrl(`search`)}&q=${(searchTerm).replace(/\s/g, `+`)}`)
-
-	return results.map(({ id, title, url, images: { original_mp4: { mp4 } } }) => ({ id, title, url, mp4 }))
+	return {
+		data: data.map(({ id, title, url, images: { original: { mp4 } } }) => ({ id, title, url, mp4 })),
+		pagination
+	}
 }
 
 /**
@@ -38,7 +39,7 @@ export async function search(searchTerm = ``) {
  * @returns {GIF} An object representing a GIF
  */
 export async function random() {
-	const { id, title, url, images: { original_mp4: { mp4 } } } = await fetchAsync(`${endpointUrl(`random`)}`)
+	const { data: { id, title, url, images: { original: { mp4 } } } } = await fetchAsync(`${endpointUrl(`random`)}`)
 
 	return { id, title, url, mp4 }
 }
