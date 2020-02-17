@@ -50,6 +50,8 @@ function App() {
 	}, [searchHistory, searchResults, searchValue, setSearchHistory])
 
 	const search = useCallback((term = ``) => {
+		// hide any errors that were previously displaying
+		setError(null)
 		term = term.toLowerCase().trim()
 
 		if (searchTimeout) clearTimeout(searchTimeout)
