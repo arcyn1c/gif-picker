@@ -19,7 +19,7 @@ async function getRandomGIFs() {
 }
 
 let searchTimeout
-const GIFS_PER_PAGE = 6
+const GIFS_PER_PAGE = 12
 
 function App() {
 	const [
