@@ -68,6 +68,7 @@ function App() {
 
 		// clear out the results before searching
 		if (term.length < 3) {
+			setSearchValue(``)
 			setSearchResults([])
 			return
 		}
