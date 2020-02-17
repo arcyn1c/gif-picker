@@ -19,7 +19,7 @@ export default function GIF({ key, title, url, mp4 }) {
 
 	return <div key={key} style={styles.container}>
 		<LazyLoad>
-			<video style={styles.video} autoPlay loop title={title}>
+			<video style={styles.video} autoPlay loop title={title} playsInline muted>
 				<source type="video/mp4" src={mp4}></source>
 				Your browser doesn't support the video tag.
 			</video>
