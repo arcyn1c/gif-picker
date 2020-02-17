@@ -1,7 +1,8 @@
 export default {
 	container: {
-		maxWidth: 300,
-		height: 200,
+		flex: 1,
+		minWidth: 300,
+		height: 240,
 		margin: `0.5em`,
 		backgroundColor: `rgba(0, 0, 0, 0.5)`,
 		paddingBottom: 50,
