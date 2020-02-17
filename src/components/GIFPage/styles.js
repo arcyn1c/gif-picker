@@ -1,10 +1,13 @@
+import appStyles from "../App/styles"
+
 export default {
 	container: {
 		position: `relative`,
-		maxWidth: `1200px`,
+		maxWidth: `960px`,
 		margin: `1em auto`,
 		display: `inline-flex`,
-		flexDirection: `column`
+		flexDirection: `column`,
+		justifyContent: `center`
 	},
 
 	header: {
@@ -18,5 +21,15 @@ export default {
 		display: `flex`,
 		flexWrap: `wrap`,
 		justifyContent: `spaceBetween`
-	}
+	},
+
+	paginationContainer: {
+		padding: `0.5em`,
+		display: `flex`,
+		justifyContent: `space-between`,
+		alignItems: `center`,
+		color: `white`
+	},
+
+	loader: appStyles.loader
 }
