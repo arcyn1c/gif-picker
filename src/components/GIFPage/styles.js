@@ -24,7 +24,7 @@ export default {
 	},
 
 	paginationContainer: {
-		padding: `0.5em`,
+		padding: `0.5em 1em`,
 		display: `flex`,
 		justifyContent: `space-between`,
 		alignItems: `center`,
