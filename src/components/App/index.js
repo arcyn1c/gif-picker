@@ -125,7 +125,13 @@ function App() {
 
 		// update history
 		setSearchHistory(updatedSearchHistory)
-	}, [searchHistory, setSearchHistory])
+
+		// if the removed history item matches the current search value, clear results
+		if (historyValue === searchValue) {
+			setSearchValue(``)
+			setSearchResults([])
+		}
+	}, [searchHistory, searchValue, setSearchHistory, setSearchResults, setSearchValue])
 
 	// show random gifs on mount
 	useEffect(() => {
