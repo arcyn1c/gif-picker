@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import LazyLoad from "react-lazyload"
 
 import styles from "./styles"
 
@@ -17,10 +18,12 @@ export default function GIF({ key, title, url, mp4 }) {
 	}
 
 	return <div key={key} style={styles.container}>
-		<video style={styles.video} autoPlay loop title={title}>
-			<source type="video/mp4" src={mp4}></source>
-			Your browser doesn't support the video tag.
-		</video>
+		<LazyLoad>
+			<video style={styles.video} autoPlay loop title={title}>
+				<source type="video/mp4" src={mp4}></source>
+				Your browser doesn't support the video tag.
+			</video>
+		</LazyLoad>
 
 		<div style={styles.buttonContainer}>
 			<input style={styles.urlInput} type="text" ref={urlRef} value={url} title={url} readOnly />
