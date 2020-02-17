@@ -49,7 +49,8 @@ export default {
 	searchHistoryContainer: {
 		display: `flex`,
 		maxWidth: 1000,
-		margin: `2em 0.5em 0`
+		margin: `2em 0.5em 0`,
+		flexWrap: `wrap`
 	},
 
 	loader: {
