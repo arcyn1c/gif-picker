@@ -40,22 +40,24 @@ function App() {
 			useState(null)
 		]
 
+	const saveCurrentSearchToHistory = useCallback(() => {
+		setSearchHistory({
+			...searchHistory,
+
+			[searchValue]: [...searchResults]
+		})
+	}, [searchHistory, searchResults, searchValue, setSearchHistory])
+
 	const search = useCallback((term = ``) => {
-		term = term.toLowerCase()
+		term = term.toLowerCase().trim()
 
 		if (searchTimeout) clearTimeout(searchTimeout)
 
 		const loadingMore = term === searchValue
 
-		// save previous search to history before searching for new term
 		if (searchValue.length > 0 && !loadingMore) {
-			setSearchHistory({
-				...searchHistory,
-
-				[searchValue]: [...searchResults]
-			})
+			saveCurrentSearchToHistory()
 		}
-		//--
 
 		if (term.length < 3) {
 			setSearchResults([])
@@ -82,11 +84,13 @@ function App() {
 		}, 1000)
 
 		return () => clearTimeout(searchTimeout)
-	}, [searchValue, setSearchValue, setSearching, setSearchHistory, searchHistory, searchResults, setSearchResults, setSearchResultsTotal, setError])
+	}, [searchValue, saveCurrentSearchToHistory, setSearchResults, setSearching, setSearchValue, searchResults, setSearchResultsTotal, setError])
 
 	const showHistoryItem = useCallback((historyValue) => {
+		saveCurrentSearchToHistory()
+
 		setSearchValue(historyValue)
-	}, [setSearchValue])
+	}, [saveCurrentSearchToHistory, setSearchValue])
 
 	const removeHistoryItem = useCallback((historyValue) => {
 		const { ...updatedSearchHistory } = searchHistory
