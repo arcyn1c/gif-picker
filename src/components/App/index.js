@@ -20,6 +20,7 @@ async function getRandomGIFs() {
 
 let searchTimeout
 const GIFS_PER_PAGE = 12
+const SEARCH_DELAY = 2000
 
 function App() {
 	const [
@@ -81,7 +82,7 @@ function App() {
 			finally {
 				setSearching(false)
 			}
-		}, 1000)
+		}, SEARCH_DELAY)
 
 		return () => clearTimeout(searchTimeout)
 	}, [searchValue, saveCurrentSearchToHistory, setSearchResults, setSearching, setSearchValue, searchResults, setSearchResultsTotal, setError])
