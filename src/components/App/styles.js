@@ -1,7 +1,10 @@
 export default {
 	container: {
 		position: `relative`,
-		textAlign: `center`
+		textAlign: `center`,
+		display: `flex`,
+		flexDirection: `column`,
+		justifyContent: `center`
 	},
 
 	headerContainer: {
