@@ -14,8 +14,8 @@ export default function GIFPage({ header, gifs = [], totalCount, onLoadMore = ()
 		</div>
 
 		{totalCount > 0 && <div style={styles.paginationContainer}>
-			<div>Showing {gifs.length} GIF{gifs.length === 1 ? `` : `s`} out of {totalCount}</div>
-			<button onClick={onLoadMore}>{isLoading ? <div style={styles.loader} className="loader"></div> : `Load More`}</button>
+			<div>Showing {gifs.length} GIF{gifs.length === 1 ? `` : `s`} out of {totalCount} total</div>
+			{gifs.length < totalCount && <button onClick={onLoadMore}>{isLoading ? <div style={styles.loader} className="loader"></div> : `Load More`}</button>}
 		</div>}
 	</div>
 }
