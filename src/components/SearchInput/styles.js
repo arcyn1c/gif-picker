@@ -1,6 +1,12 @@
+import appStyles from "../App/styles"
+
 export default {
 	container: {
 		position: `relative`
+	},
+
+	input: {
+		padding: `0.3em 35px`
 	},
 
 	icon: {
@@ -15,10 +21,8 @@ export default {
 	},
 
 	loader: {
-		width: 15,
-		height: 15,
-		border: `2px dashed rgba(255, 255, 255, 0.6)`,
-		borderRadius: 100,
+		...appStyles.loader,
+
 		position: `absolute`,
 		right: 0,
 		top: `50%`,
