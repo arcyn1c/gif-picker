@@ -17,13 +17,19 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-		"extends": "react-app",
-		"rules": {
-			"key-spacing": "error",
-			"quotes": [2, "backtick"],
-			"semi": ["error", "never"],
-			"comma-dangle": "error"
-		}
+    "extends": "react-app",
+    "rules": {
+      "key-spacing": "error",
+      "quotes": [
+        2,
+        "backtick"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "comma-dangle": "error"
+    }
   },
   "browserslist": {
     "production": [
